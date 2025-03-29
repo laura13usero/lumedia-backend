@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Lumedia</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body> 
+
+  <header></header> <!-- Aquí se cargará dinámicamente el header -->
+
+  <main>
+    <!-- Barra de búsqueda y filtro -->
+    <section class="busqueda">
+      <input type="text" id="buscador" placeholder="🔍 Buscar vídeos por título..." />
+      <select id="categoria-select">
+        <option value="all">Todas las categorías</option>
+        <option value="ranking"> Ranking</option>
+      </select>
+      <p id="resultado-busqueda"></p>
+    </section>
+  
+    <!-- Listado de vídeos -->
+    <section id="video-list" class="video-grid">
+      <!-- Los vídeos se cargarán aquí -->
+    </section>
+  
+    <!-- Paginación -->
+    <div id="paginacion" class="paginacion">
+      <button id="anterior" class="ui-btn"><span>⏮ Anterior</span></button>
+      <span id="pagina-actual">Página 1</span>
+      <button id="siguiente" class="ui-btn"><span>Siguiente ⏭</span></button>
+    </div>
+  </main>
+
+  <script src="components/header.js"></script>
+</body>
+</html>

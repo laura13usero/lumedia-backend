@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ver vídeo - Lumedia</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header></header>
+
+  <main id="video-container" class="video-detalle">
+    <!-- Contenido dinámico -->
+  </main>
+
+  <section id="comentarios-section">
+    <h2>Comentarios</h2>
+    <form id="comentario-form">
+      <textarea name="texto" placeholder="Escribe un comentario..." required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <div id="comentarios-list"></div>
+  </section>
+
+  <script src="js/api.js"></script>
+  <script src="js/comentarios.js"></script>
+  <script src="js/video.js"></script>
+  <script src="components/header.js"></script>
+</body>
+</html>
