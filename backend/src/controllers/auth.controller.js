@@ -87,7 +87,7 @@ exports.login = async (req, res) => {
     }
 
     // Comparar la contraseña proporcionada con la almacenada
-    const match = await bcrypt.compare(contraseña, user.contraseña);
+    //const match = await bcrypt.compare(contraseña, user.contraseña);
 
     if (!match) {
       return res.status(401).json({ error: 'Credenciales inválidas' });
