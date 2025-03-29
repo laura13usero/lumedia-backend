@@ -6,6 +6,9 @@ const pool = new Pool({
   database: 'postgres',     // Nombre de la base de datos que quieres usar
   password: 'lumedia123',        // Contraseña que me mencionaste
   port: 5432,              // Puerto por defecto de PostgreSQL
+  ssl: {
+    rejectUnauthorized: false, // Puedes intentar agregar esto para no rechazar los certificados no autorizados (solo en desarrollo)
+  }
 });
 
 module.exports = pool;
