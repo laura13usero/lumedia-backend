@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   
     // Cargar favoritos
-    const favoritos = await fetch('http://localhost:3000/api/favoritos', {
+    const favoritos = await fetch('http://3.88.175.169:3000/api/favoritos', {
       headers: { 'Authorization': 'Bearer ' + token }
     }).then(res => res.json());
   
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   
     // Cargar todos los vídeos y filtrar por usuario
-    const todos = await fetch('http://localhost:3000/api/videos').then(r => r.json());
+    const todos = await fetch('http://3.88.175.169:3000/api/videos').then(r => r.json());
     const propios = todos.filter(v => v.usuario_id === userId);
     document.getElementById('count-videos').innerText = propios.length;
     mostrarVideos(propios, document.getElementById('mis-videos-list'));

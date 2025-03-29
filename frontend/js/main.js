@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const resultadoTexto = document.getElementById('resultado-busqueda');
 
   // Cargar categorías
-  const cats = await fetch('http://localhost:3000/api/categorias').then(r => r.json());
+  const cats = await fetch('http://3.88.175.169:3000/api/categorias').then(r => r.json());
   cats.forEach(cat => {
     const option = document.createElement('option');
     option.value = cat.id;
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   categoriaSelect.appendChild(optionRanking);
 
   // Cargar todos los vídeos
-  todosLosVideos = await fetch('http://localhost:3000/api/videos').then(r => r.json());
+  todosLosVideos = await fetch('http://3.88.175.169:3000/api/videos').then(r => r.json());
   renderPagina();
 
   buscador.addEventListener('input', renderPagina);
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (categoriaSeleccionada === 'ranking') {
       // Si se selecciona 'ranking', obtener los vídeos ordenados por likes
-      fetch('http://localhost:3000/api/videos/ranking')
+      fetch('http://3.88.175.169:3000/api/videos/ranking')
         .then(r => r.json())
         .then(data => {
           rankingVideos = data;  // Guardamos los vídeos del ranking

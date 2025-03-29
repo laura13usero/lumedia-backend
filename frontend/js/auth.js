@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const contraseña = loginForm.contraseña.value;
   
         try {
-          const res = await fetch('http://localhost:3000/api/auth/login', {
+          const res = await fetch('http://3.88.175.169:3000/api/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, contraseña })
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const contraseña = registerForm.contraseña.value;
   
         try {
-          const res = await fetch('http://localhost:3000/api/auth/register', {
+          const res = await fetch('http://3.88.175.169:3000/api/auth/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ nombre, email, contraseña })

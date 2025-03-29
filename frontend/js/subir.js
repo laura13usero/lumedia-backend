@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   
     // Cargar categorías
     const categoriaSelect = document.getElementById('categoria-select');
-    const cats = await fetch('http://localhost:3000/api/categorias').then(r => r.json());
+    const cats = await fetch('http://3.88.175.169:3000/api/categorias').then(r => r.json());
     cats.forEach(cat => {
       const option = document.createElement('option');
       option.value = cat.id;
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       mensaje.textContent = 'Subiendo vídeo...';
   
       try {
-        const res = await fetch('http://localhost:3000/api/videos/upload', {
+        const res = await fetch('http://3.88.175.169:3000/api/videos/upload', {
           method: 'POST',
           headers: {
             Authorization: 'Bearer ' + token

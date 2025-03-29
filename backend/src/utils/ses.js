@@ -12,7 +12,7 @@ const sesClient = new SESClient({
 
 // Función para enviar el correo de confirmación
 exports.enviarCorreoConfirmacion = async (email, token) => {
-  const link = `http://localhost:3000/api/auth/confirmar/${token}`;
+  const link = `http://3.88.175.169:3000/api/auth/confirmar/${token}`;
 
   const params = {
     Destination: {
