@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil - Lumedia</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header></header>
+
+  <main>
+    <!-- Datos del usuario -->
+    <section id="datos-usuario">
+      <div class="usuario-info">
+        <div id="avatar"></div>
+        <div>
+          <h2 id="user-email"></h2>
+          <p><span id="count-videos">0</span> vídeos subidos | <span id="count-favoritos">0</span> favoritos</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mis vídeos -->
+    <section>
+      <h2>📹 Mis vídeos</h2>
+      <div id="mis-videos-list" class="video-grid"></div>
+    </section>
+
+    <!-- Favoritos con barra de búsqueda -->
+    <section>
+      <h2>Favoritos</h2>
+      <input type="text" id="busqueda-favoritos" placeholder="Buscar en favoritos..." />
+      <div id="favoritos-list" class="video-grid"></div>
+    </section>
+  </main>
+
+  <script src="components/header.js"></script>
+  <script src="js/perfil.js"></script>
+</body>
+</html>

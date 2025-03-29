@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro - Lumedia</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="auth-page">
+  <header></header>
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="media/lumediaBg.mp4" type="video/mp4">
+  </video>
+
+  <main class="auth-main">
+    <form class="form" id="register-form">
+      <div class="title">
+        Crear cuenta <br>
+        <span>Regístrate para continuar</span>
+      </div>
+
+      <input class="input" name="nombre" placeholder="Nombre completo" type="text" required />
+      <input class="input" name="email" placeholder="Email" type="email" required />
+      <input class="input" name="contraseña" placeholder="Password" type="password" required />
+
+      <!-- Opcional: Botones de acceso social -->
+      <div class="login-with">
+        <div class="button-log">t</div>
+        <div class="button-log">
+          <!-- SVG Google -->
+          <svg class="icon" ...></svg>
+        </div>
+        <div class="button-log">
+          <!-- SVG Facebook -->
+          <svg class="icon" ...></svg>
+        </div>
+      </div>
+
+      <button class="button-confirm" type="submit">Let’s go →</button>
+
+      <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+
+      <div id="error-msg"></div>
+    </form>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="components/header.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión - Lumedia</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="auth-page">
+  <header></header> <!-- Header dinámico si lo deseas -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="media/lumediaBg.mp4" type="video/mp4">
+  </video>
+
+  <main class="auth-main">
+    <!-- Nuevo formulario con la clase `.form` -->
+    <form class="form" id="login-form">
+      <div class="title">
+        Iniciar Sesión <br>
+        <span>Entra para continuar</span>
+      </div>
+
+      <input class="input" name="email" placeholder="Email" type="email" required />
+      <input class="input" name="contraseña" placeholder="Password" type="password" required />
+
+      <!-- Opcional: Botones de acceso social (Facebook, Google, Twitter...) -->
+      <div class="login-with">
+        <div class="button-log"><b>t</b></div>
+        <div class="button-log">
+          <!-- SVG de Google -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#000" viewBox="0 0 56.693 56.693" class="icon">
+            <!-- ... Resto del SVG ... -->
+          </svg>
+        </div>
+        <div class="button-log">
+          <!-- SVG de Facebook -->
+          <svg class="icon" height="24" width="24" viewBox="0 0 56.693 56.693">
+            <!-- ... Resto del SVG ... -->
+          </svg>
+        </div>
+      </div>
+
+      <!-- Botón de submit con la clase `.button-confirm` -->
+      <button class="button-confirm" type="submit">Let’s go →</button>
+
+      <!-- El texto de enlace a register -->
+      <p>¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
+
+      <div id="error-msg"></div>
+    </form>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="components/header.js"></script>
+</body>
+</html>

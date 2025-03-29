@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subir vídeo - Lumedia</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header></header>
+
+  <main class="form-container">
+    <h2> Subir un vídeo</h2>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="text" name="titulo" placeholder="Título del vídeo" required />
+        <textarea name="descripcion" placeholder="Descripción..." required></textarea>
+        
+        <!-- Selector de categorías -->
+        <select name="categoria_id" id="categoria-select" required>
+          <option value="">Selecciona una categoría</option>
+        </select>
+        
+        <input type="file" name="video" accept="video/*" required />
+        <button type="submit">Subir vídeo</button>
+        <div id="mensaje"></div>
+      </form>      
+  </main>
+
+  <script src="js/subir.js"></script>
+  <script src="components/header.js"></script>
+</body>
+</html>
