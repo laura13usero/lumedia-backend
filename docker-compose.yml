@@ -9,6 +9,8 @@ services:
     depends_on:
       - db
     restart: always
+    context: ./backend
+    dockerfile: ../Dockerfile
   db:
     image: postgres:15
     environment:
