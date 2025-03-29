@@ -1,5 +1,5 @@
 const db = require('../database/db');
-const bcrypt = require('bcryptjs');
+//const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const { enviarCorreoConfirmacion } = require('../utils/ses');
@@ -14,7 +14,7 @@ exports.register = async (req, res) => {
 
   try {
     // Encriptación de la contraseña
-    const hash = await bcrypt.hash(contraseña, 10);
+    const hash = contraseña//await bcrypt.hash(contraseña, 10);
 
     // Generación de token de confirmación
     const token = crypto.randomBytes(20).toString('hex');
@@ -88,8 +88,13 @@ exports.login = async (req, res) => {
 
     // Comparar la contraseña proporcionada con la almacenada
     const match = await bcrypt.compare(contraseña, user.contraseña);
+
     if (!match) {
       return res.status(401).json({ error: 'Credenciales inválidas' });
+    }
+
+    if (contraseña !== user.contraseña) {
+      console.log('Las contraseñas no coinciden');
     }
 
     // Generar un token JWT
