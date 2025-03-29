@@ -10,14 +10,14 @@ app.use(cors());
 app.use(express.json());
 
 // Servir archivos estáticos desde el directorio frontend
-app.use(express.static(path.join(__dirname, '../../frontend')));
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Rutas de la API
 app.use('/api/auth', authRoutes);
 
 // Ruta por defecto para servir index.html (opcional)
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../frontend', 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
 module.exports = app;
