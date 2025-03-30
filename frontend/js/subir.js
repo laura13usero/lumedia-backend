@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       e.preventDefault();
       const formData = new FormData(form);
   
-      mensaje.textContent = 'Subiendo vídeo...';
-  
+      console.log('Subiendo vídeo...');
+
       try {
         const res = await fetch('http://3.88.175.169:3000/api/videos/upload', {
           method: 'POST',
@@ -37,13 +37,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   
         if (!res.ok) {
           const err = await res.json();
+          console.log('Error al subir el vídeo: ' + err + err.error);
           throw new Error(err.error || 'Error al subir el vídeo');
         }
   
-        mensaje.textContent = '✅ ¡Vídeo subido correctamente!';
+        
+        console.log('¡Vídeo subido correctamente!');
         form.reset();
         setTimeout(() => window.location.href = 'perfil.html', 1500);
       } catch (err) {
+        console.log('Error al subir el vídeo2: ' + err + err.error);
         mensaje.textContent = `❌ ${err.message}`;
       }
     });
