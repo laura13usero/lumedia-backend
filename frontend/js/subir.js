@@ -24,7 +24,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       e.preventDefault();
       const formData = new FormData(form);
   
-      console.log('Subiendo vídeo...');
+      alert('Subiendo vídeo...');
+      for (let pair of formData.entries()) {
+        alert(pair[0], pair[1]); // 👈 Verifica que los datos están correctos
+      }
 
       try {
         const res = await fetch('http://3.88.175.169:3000/api/videos/upload', {
@@ -37,16 +40,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   
         if (!res.ok) {
           const err = await res.json();
-          console.log('Error al subir el vídeo: ' + err + err.error);
+          alert('Error al subir el vídeo: ' + err + err.error);
           throw new Error(err.error || 'Error al subir el vídeo');
         }
   
         
-        console.log('¡Vídeo subido correctamente!');
+        alert('¡Vídeo subido correctamente!');
         form.reset();
         setTimeout(() => window.location.href = 'perfil.html', 1500);
       } catch (err) {
-        console.log('Error al subir el vídeo2: ' + err + err.error);
+        alert('Error al subir el vídeo2: ' + err + err.error);
         mensaje.textContent = `❌ ${err.message}`;
       }
     });
