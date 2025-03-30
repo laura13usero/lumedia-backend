@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   
     // Cargar favoritos
-    const favoritos = await fetch('http://3.88.175.169:3000/api/favoritos', {
+   /* const favoritos = await fetch('http://3.88.175.169:3000/api/favoritos', {
       headers: { 'Authorization': 'Bearer ' + token }
     }).then(res => res.json());
   
@@ -34,23 +34,39 @@ document.addEventListener('DOMContentLoaded', async () => {
       const texto = inputBusqueda.value.toLowerCase();
       const filtrados = favoritos.filter(v => v.titulo.toLowerCase().includes(texto));
       mostrarVideos(filtrados, document.getElementById('favoritos-list'));
-    });
+    });*/
   
     // Cargar todos los vídeos y filtrar por usuario
     /*const todos = await fetch('http://3.88.175.169:3000/api/videos').then(r => r.json());
     const propios = todos.filter(v => v.usuario_id === userId);
     document.getElementById('count-videos').innerText = propios.length;*/
-    mostrarVideos(propios, 'https://lumedia-videos.s3.us-east-1.amazonaws.com/ramen.mp4');
+   // mostrarVideos(propios, 'https://lumedia-videos.s3.us-east-1.amazonaws.com/ramen.mp4');
+    const misVideosList = document.getElementById('mis-videos-list');
+    mostrarVideos(propios, misVideosList);
   });
   
   // Función para mostrar vídeos en un contenedor
   function mostrarVideos(videos, url) {
+    /*contenedor.innerHTML = videos.map(video => `
+      <div class="video-card">
+          <h3>titulo</h3>
+          <p>descripcion</p>
+          <iframe src="https://lumedia-videos.s3.us-east-1.amazonaws.com/ramen.mp4"
+                width="560" height="315" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+        </div>
+    `).join('');*/
+
     contenedor.innerHTML = videos.map(video => `
       <div class="video-card">
-        <h3>titulo</h3>
-        <p>aaa</p>
-        <a href="${url}" target="_blank">Ver vídeo</a>
-      </div>
+          <h3>titulo</h3>
+          <p>descripcion</p>
+          <iframe src="https://lumedia-videos.s3.us-east-1.amazonaws.com/ramen.mp4"
+                width="560" height="315" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+        </div>
     `).join('');
   }
 
