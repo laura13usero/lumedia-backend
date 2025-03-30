@@ -6,8 +6,10 @@ const upload = multer({ storage: multer.memoryStorage() }); // Guarda en memoria
 // Subir un video
 exports.subir = async (req, res) => {
   try {
-    alert(req.userId);
-    const usuario_id = req.userId;
+    //alert(req.userId);
+    const token = localStorage.getItem('token');
+    alert('token al subir: ' + token);
+    const usuario_id = token;
 
     const { titulo, descripcion, categoria_id } = req.body;
     const archivo = req.file;
