@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Hacemos una solicitud GET para obtener todos los videos desde el servidor
+    alert('token antes de mandarse:' + localStorage.getItem('token'))
     const response = await fetch('/api/videos', {
       method: 'GET',
       headers: {
