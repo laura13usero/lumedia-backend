@@ -7,7 +7,8 @@ const upload = multer({ storage: multer.memoryStorage() }); // Guarda el archivo
 const { verificarToken } = require('../middlewares/auth.middleware');
 
 // Ruta protegida para subir vídeo
-router.post('/upload', verificarToken, upload.single('video'), videoController.subir);
+router.post('/upload', upload.single('video'), videoController.subir);
+
 
 // NUEVAS RUTAS
 // Obtener todos los videos (pública)
@@ -37,6 +38,7 @@ router.get('/ranking', async (_req, res) => {
   }
 });
 
-router.post('/upload', upload.single('video'), videoController.subir);
+//router.post('/upload', upload.single('video'), videoController.subir);
+
 
 module.exports = router;
