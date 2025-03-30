@@ -8,6 +8,7 @@ exports.subir = async (req, res) => {
   try {
     alert(req.userId);
     const usuario_id = req.userId;
+
     const { titulo, descripcion, categoria_id } = req.body;
     const archivo = req.file;
 
