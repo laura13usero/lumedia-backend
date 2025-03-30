@@ -47,3 +47,16 @@ CREATE TABLE IF NOT EXISTS categorias (
 );
 
 ALTER TABLE videos ADD COLUMN categoria_id INTEGER REFERENCES categorias(id);
+
+
+INSERT INTO categorias (nombre) VALUES
+  ('Cocina'),
+  ('Entretenimiento'),
+  ('Educación'),
+  ('Música'),
+  ('Ciencia y Tecnología'),
+  ('Cine y TV'),
+  ('Videojuegos'),
+  ('Salud y Bienestar'),
+  ('Viajes y Turismo'),
+  ('Animales y Naturaleza');
