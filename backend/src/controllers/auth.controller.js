@@ -99,9 +99,7 @@ exports.login = async (req, res) => {
 
     // Generar un token JWT
     const token = user.id; //jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '2h' });
-
-    alert('userID: '+ user.id);
-    localStorage.setItem('token', token);
+    
     // Enviar el token de respuesta
     res.json({ token });
   } catch (err) {

@@ -8,7 +8,7 @@ exports.subir = async (req, res) => {
   try {
     //alert(req.userId);
     const token = localStorage.getItem('token');
-    alert('token al subir: ' + token);
+    //alert('token al subir: ' + token);
     const usuario_id = token;
 
     const { titulo, descripcion, categoria_id } = req.body;
