@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let pair of formData.entries()) {
       console.log(pair[0], pair[1]); // Muestra todos los datos del formulario
     }
-  
+
+    formData.append('user_id', token);
+
     try {
       const res = await fetch('http://3.88.175.169:3000/api/videos/upload', {
         method: 'POST',
