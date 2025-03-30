@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       alert('✅ Formulario encontrado');
     }
   
-    form.addEventListener('submit', async (e) => {
+   /*form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
   
@@ -59,6 +59,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         alert('Error al subir el vídeo2: ' + err + err.error);
         mensaje.textContent = `❌ ${err.message}`;
       }
+    });*/
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();  // Evita que el formulario se envíe de forma tradicional
+      alert('Formulario enviado');
+      
+      // Aquí va el código que envía los datos a la API
     });
   });
   
