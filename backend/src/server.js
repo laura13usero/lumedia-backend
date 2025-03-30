@@ -16,7 +16,7 @@ app.use(express.static('public'));
 app.get('/api/videos', async (req, res) => {
   try {
 
-    const usuario_id = req.headers['authorization']?.split(' ')[1];
+    const usuario_id = req.headers['token'];
     console.log('ID del usuario recibido:', usuario_id);
 
 

@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Hacemos una solicitud GET para obtener todos los videos desde el servidor
-    alert('token antes de mandarse:' + localStorage.getItem('token'))
+    //alert('token antes de mandarse:' + localStorage.getItem('token'))
     const response = await fetch('/api/videos', {
       method: 'GET',
       headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('token') // Enviar el token en el header
+        'token':  localStorage.getItem('token') // Enviar el token en el header
       }
     });
     if (response.ok) {
