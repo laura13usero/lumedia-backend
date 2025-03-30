@@ -1,19 +1,39 @@
-// src/controllers/video.controller.js
 const videoService = require('../services/video.service');  // Importamos el servicio para gestionar videos
+const s3 = require('../utils/s3'); // Importamos la configuración de S3
+const multer = require('multer');
+const upload = multer({ storage: multer.memoryStorage() }); // Guarda en memoria antes de subir a S3
 
 // Subir un video
 exports.subir = async (req, res) => {
   try {
     const usuario_id = req.user.id;
-    const { titulo, descripcion, categoria_id } = req.body;  // Asegúrate de que se obtiene el categoria_id
-    const url = req.file.location;
+    const { titulo, descripcion, categoria_id } = req.body;
+    const archivo = req.file;
 
+    if (!archivo) {
+      return res.status(400).json({ error: 'No se proporcionó ningún archivo' });
+    }
+
+    // Configuración del archivo en S3
+    const params = {
+      Bucket: process.env.S3_BUCKET_NAME,
+      Key: `videos/${Date.now()}_${archivo.originalname}`, // Nombre único
+      Body: archivo.buffer,
+      ContentType: archivo.mimetype,
+      ACL: 'public-read'
+    };
+
+    // Subir a S3
+    const resultado = await s3.upload(params).promise();
+    const videoURL = resultado.Location;
+
+    // Guardar en la base de datos
     const result = await videoService.guardarVideo({
       usuario_id,
       titulo,
       descripcion,
-      url,
-      categoria_id  // Se pasa el categoria_id a la función de servicio
+      url: videoURL,
+      categoria_id
     });
 
     res.status(201).json(result);
@@ -27,7 +47,7 @@ exports.subir = async (req, res) => {
 exports.obtenerTodos = async (_req, res) => {
   try {
     const videos = await videoService.obtenerTodos();
-    res.json(videos);  // Responde con los videos, que ya incluyen autor y categoría
+    res.json(videos);
   } catch (err) {
     res.status(500).json({ error: 'Error al obtener vídeos' });
   }
@@ -38,7 +58,7 @@ exports.obtenerPorId = async (req, res) => {
   try {
     const video = await videoService.obtenerPorId(req.params.id);
     if (!video) return res.status(404).json({ error: 'Vídeo no encontrado' });
-    res.json(video);  // Responde con el vídeo que incluye autor y categoría
+    res.json(video);
   } catch (err) {
     res.status(500).json({ error: 'Error al obtener el vídeo' });
   }

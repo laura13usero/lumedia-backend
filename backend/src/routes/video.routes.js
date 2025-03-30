@@ -2,7 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const videoController = require('../controllers/video.controller');
-const upload = require('../utils/s3');
+const multer = require('multer');
+const upload = multer({ storage: multer.memoryStorage() }); // Guarda el archivo en memoria
 const { verificarToken } = require('../middlewares/auth.middleware');
 
 // Ruta protegida para subir vídeo
@@ -35,5 +36,7 @@ router.get('/ranking', async (_req, res) => {
     res.status(500).json({ error: 'Error al obtener ranking' });
   }
 });
+
+router.post('/upload', upload.single('video'), videoController.subir);
 
 module.exports = router;
