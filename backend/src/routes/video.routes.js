@@ -16,7 +16,7 @@ router.post('/upload', upload.single('video'), videoController.subir);
 router.get('/', videoController.obtenerTodos);
 
 // Obtener detalle de un video específico (pública)
-router.get('/:id', videoController.obtenerPorId);
+router.get('/:usuario_id', videoController.obtenerPorUsuario);
 
 // Ruta para el ranking de videos (con likes)
 router.get('/ranking', async (_req, res) => {

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Asegúrate de que el DOM esté completamente cargado
   const form = document.getElementById('upload-form');
   const token = localStorage.getItem('token');
-  alert('token: ' + token);
+  //alert('token: ' + token);
   //const mensaje = document.getElementById('mensaje'); // Suponiendo que quieras mostrar mensajes de error aquí
 
   form.addEventListener('submit', async (e) => {

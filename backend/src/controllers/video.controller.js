@@ -65,3 +65,25 @@ exports.obtenerPorId = async (req, res) => {
     res.status(500).json({ error: 'Error al obtener el vídeo' });
   }
 };
+
+exports.obtenerPorUsuario = async (req, res) => {
+  const usuario_id = req.params.usuario_id; // Obtiene el ID del usuario de la URL
+  console.log('🔍 Buscando videos del usuario:', usuario_id);
+
+  try {
+      const result = await pool.query(
+          'SELECT id, usuario_id, url, titulo, descripcion FROM videos WHERE usuario_id = $1',
+          [usuario_id]
+      );
+      console.log('📋 Videos encontrados:', result.rows);
+      
+      if (result.rows.length > 0) {
+          res.json(result.rows);
+      } else {
+          res.status(404).json({ error: 'No se encontraron videos para este usuario' });
+      }
+  } catch (error) {
+      console.error('❌ Error al obtener videos:', error);
+      res.status(500).json({ error: 'Error al obtener los videos' });
+  }
+};
