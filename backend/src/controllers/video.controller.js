@@ -9,7 +9,7 @@ exports.subir = async (req, res) => {
     
 
     const { titulo, descripcion, categoria_id, userId } = req.body;
-    const usuario_id = userId;
+    const usuario_id = req.token;
     const archivo = req.file;
 
     if (!archivo) {

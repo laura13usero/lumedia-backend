@@ -15,13 +15,8 @@ app.use(express.static('public'));
 // Endpoint para obtener la URL del video
 app.get('/api/videos', async (req, res) => {
   try {
-
-    const usuario_id = 2;
-    console.log('ID del usuario recibido:', usuario_id);
-
-
     // Realizamos la consulta a la base de datos para obtener todos los videos
-    const result = await pool.query('SELECT id, usuario_id, url, titulo, descripcion FROM videos WHERE usuario_id = 2');
+    const result = await pool.query('SELECT id, url, titulo, descripcion FROM videos');
     if (result.rows.length > 0) {
       res.json(result.rows);  // Enviamos todos los videos como respuesta en formato JSON
     } else {
@@ -32,3 +27,4 @@ app.get('/api/videos', async (req, res) => {
     res.status(500).json({ error: 'Error al consultar la base de datos' });
   }
 });
+
