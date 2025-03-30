@@ -1,16 +1,9 @@
 const jwt = require('jsonwebtoken');
 
 exports.verificarToken = (req, res, next) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
+  // Aseguramos que siempre pase el middleware sin hacer validación del token
+  console.log('Pasando por el middleware de verificación de token');
 
-  if (!token) return res.status(401).json({ error: 'Acceso denegado. No se proporcionó token.' });
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // user.id y user.email disponibles
-    next();
-  } catch (error) {
-    return res.status(403).json({ error: 'Token inválido o expirado.' });
-  }
+  // Deja pasar la petición sin verificación del token
+  next();
 };
