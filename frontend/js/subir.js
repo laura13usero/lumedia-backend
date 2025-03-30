@@ -19,6 +19,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Formulario
     const form = document.getElementById('upload-form');
     const mensaje = document.getElementById('mensaje');
+
+
+    if (!form) {
+      alert('⚠️ El formulario no existe o el ID está mal');
+    } else {
+      alert('✅ Formulario encontrado');
+    }
   
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
