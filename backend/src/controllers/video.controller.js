@@ -67,7 +67,7 @@ exports.obtenerPorId = async (req, res) => {
 };
 
 exports.obtenerPorUsuario = async (req, res) => {
-  const usuario_id = req.params.usuario_id; // Obtiene el ID del usuario de la URL
+  const usuario_id = 2; // Obtiene el ID del usuario de la URL
   console.log('🔍 Buscando videos del usuario:', usuario_id);
 
   try {
