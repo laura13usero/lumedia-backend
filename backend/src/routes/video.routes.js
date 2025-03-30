@@ -4,10 +4,11 @@ const router = express.Router();
 const videoController = require('../controllers/video.controller');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() }); // Guarda el archivo en memoria
-const { verificarToken } = require('../middlewares/auth.middleware');
+const authMiddleware = require('../middlewares/auth.middleware');
 
 // Ruta protegida para subir vídeo
-router.post('/upload', upload.single('video'), videoController.subir);
+//router.post('/upload', upload.single('video'), videoController.subir);
+router.post('/upload', authMiddleware.verificarToken, upload.single('video'), videoController.subir);
 
 
 // NUEVAS RUTAS
