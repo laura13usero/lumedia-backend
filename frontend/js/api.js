@@ -1,4 +1,4 @@
-const API_URL = 'http://3.88.175.169:3000/api'; // Cambiar a IP pública en producción
+const API_URL = 'http://13.218.77.33:3000/api'; // Cambiar a IP pública en producción
 
 export async function obtenerVideos() {
   const res = await fetch(`${API_URL}/videos`);
@@ -8,6 +8,6 @@ export async function obtenerVideos() {
 
 // Si no usas módulos, haz que la función sea global
 window.obtenerVideos = async function () {
-  const res = await fetch('http://3.88.175.169:3000/api/videos');
+  const res = await fetch('http://13.218.77.33:3000/api/videos');
   return await res.json();
 };

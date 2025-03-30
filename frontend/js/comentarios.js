@@ -3,7 +3,7 @@ async function cargarComentarios(video_id) {
     contenedor.innerHTML = 'Cargando comentarios...';
   
     try {
-      const res = await fetch(`http://3.88.175.169:3000/api/comentarios/video/${video_id}`);
+      const res = await fetch(`http://13.218.77.33:3000/api/comentarios/video/${video_id}`);
       const comentarios = await res.json();
   
       contenedor.innerHTML = comentarios.length === 0
@@ -32,7 +32,7 @@ async function cargarComentarios(video_id) {
       if (!token) return alert('Debes iniciar sesión para comentar');
   
       try {
-        const res = await fetch(`http://3.88.175.169:3000/api/comentarios`, {
+        const res = await fetch(`http://13.218.77.33:3000/api/comentarios`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

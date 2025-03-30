@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   
     try {
-      const res = await fetch(`http://3.88.175.169:3000/api/videos/${id}`);
+      const res = await fetch(`http://13.218.77.33:3000/api/videos/${id}`);
       const video = await res.json();
   
       container.innerHTML = `
@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       const headers = token ? { 'Authorization': 'Bearer ' + token } : {};
   
       // Cargar conteo de likes y dislikes
-      const conteoRes = await fetch(`http://3.88.175.169:3000/api/reacciones/video/${id}`);
+      const conteoRes = await fetch(`http://13.218.77.33:3000/api/reacciones/video/${id}`);
       const conteo = await conteoRes.json();
       likeBtn.innerText = `👍 Like (${conteo.likes})`;
       dislikeBtn.innerText = `👎 Dislike (${conteo.dislikes})`;
   
       // Ver si el video está en favoritos
       if (token) {
-        const favRes = await fetch(`http://3.88.175.169:3000/api/favoritos/video/${id}`, { headers });
+        const favRes = await fetch(`http://13.218.77.33:3000/api/favoritos/video/${id}`, { headers });
         const fav = await favRes.json();
         if (fav.favorito) {
           favBtn.classList.add('activo');
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       likeBtn.addEventListener('click', async () => {
         if (!token) return alert('Inicia sesión para reaccionar');
   
-        await fetch(`http://3.88.175.169:3000/api/reacciones`, {
+        await fetch(`http://13.218.77.33:3000/api/reacciones`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       dislikeBtn.addEventListener('click', async () => {
         if (!token) return alert('Inicia sesión para reaccionar');
   
-        await fetch(`http://3.88.175.169:3000/api/reacciones`, {
+        await fetch(`http://13.218.77.33:3000/api/reacciones`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -85,13 +85,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!token) return alert('Inicia sesión para guardar favoritos');
   
         if (favBtn.classList.contains('activo')) {
-          await fetch(`http://3.88.175.169:3000/api/favoritos/${id}`, {
+          await fetch(`http://13.218.77.33:3000/api/favoritos/${id}`, {
             method: 'DELETE',
             headers
           });
           favBtn.classList.remove('activo');
         } else {
-          await fetch(`http://3.88.175.169:3000/api/favoritos`, {
+          await fetch(`http://13.218.77.33:3000/api/favoritos`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

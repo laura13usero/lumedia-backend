@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     formData.append('userId', token);
 
     try {
-      const res = await fetch('http://3.88.175.169:3000/api/videos/upload', {
+      const res = await fetch('http://13.218.77.33:3000/api/videos/upload', {
         method: 'POST',
         headers: {
           'Authorization': 'Bearer ' + token
