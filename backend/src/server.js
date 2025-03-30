@@ -17,10 +17,11 @@ app.get('/api/videos', async (req, res) => {
   try {
 
     const usuario_id = req.headers['authorization']?.split(' ')[1];
+    console.log('ID del usuario recibido:', usuario_id);
 
 
     // Realizamos la consulta a la base de datos para obtener todos los videos
-    const result = await pool.query('SELECT id, url, titulo, descripcion FROM videos WHERE usuario_id = "2"');
+    const result = await pool.query('SELECT id, url, titulo, descripcion FROM videos WHERE usuario_id = $1', [usuario_id]);
     if (result.rows.length > 0) {
       res.json(result.rows);  // Enviamos todos los videos como respuesta en formato JSON
     } else {
