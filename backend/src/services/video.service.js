@@ -15,12 +15,7 @@ exports.guardarVideo = async ({ usuario_id, titulo, descripcion, url, categoria_
 exports.obtenerTodos = async () => {
   try {
     const result = await db.query(`
-      SELECT v.*, u.nombre AS autor, c.nombre AS categoria
-      FROM videos v
-      JOIN usuarios u ON v.usuario_id = u.id
-      LEFT JOIN categorias c ON v.categoria_id = c.id
-      ORDER BY v.fecha_subida DESC
-    `);
+      SELECT id, usuario_id, url, titulo, descripcion FROM videos WHERE usuario_id = 2`);
     return result.rows;  // Retorna todos los videos con autor y categoría
   } catch (error) {
     console.error('Error obteniendo todos los videos:', error);
@@ -32,12 +27,7 @@ exports.obtenerTodos = async () => {
 exports.obtenerPorId = async (id) => {
   try {
     const result = await db.query(`
-      SELECT v.*, u.nombre AS autor, c.nombre AS categoria
-      FROM videos v
-      JOIN usuarios u ON v.usuario_id = u.id
-      LEFT JOIN categorias c ON v.categoria_id = c.id
-      WHERE v.id = $1
-    `, [id]);
+      SELECT id, usuario_id, url, titulo, descripcion FROM videos WHERE usuario_id = 7`);
 
     return result.rows[0];  // Retorna el video correspondiente al ID con categoría
   } catch (error) {
