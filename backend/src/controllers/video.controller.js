@@ -20,7 +20,7 @@ exports.subir = async (req, res) => {
       Key: `videos/${Date.now()}_${archivo.originalname}`, // Nombre único
       Body: archivo.buffer,
       ContentType: archivo.mimetype,
-      //ACL: 'public-read'
+      //ACL: 'public-read' 
     };
 
     // Subir a S3
