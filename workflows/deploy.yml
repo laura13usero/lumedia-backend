@@ -29,6 +29,7 @@ jobs:
         key: ${{ secrets.EC2_KEY }}
         source: "."
         target: "/home/ubuntu/lumedia/backend"
+        debug: true
 
     - name: Ejecutar docker-compose vía SSH
       uses: appleboy/ssh-action@master
