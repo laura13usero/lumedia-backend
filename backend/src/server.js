@@ -3,9 +3,6 @@ const PORT = process.env.PORT || 3000;
 const express = require('express');
 const pool = require('./database/db');  // El archivo db.js que ya tienes
 
-const app = express();
-const port = 3000;
-
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
 });
