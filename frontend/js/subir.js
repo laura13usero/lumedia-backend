@@ -1,23 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Asegúrate de que el DOM esté completamente cargado
-  alert('DOM completamente cargado');
   
   const form = document.getElementById('upload-form');
-  
-  if (!form) {
-    alert('⚠️ El formulario no existe o el ID está mal');
-  } else {
-    alert('✅ Formulario encontrado');
-  }
+  const token = localStorage.getItem('token');
 
   form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
   
       alert('Subiendo vídeo...');
-      for (let pair of formData.entries()) {
+      /*for (let pair of formData.entries()) {
         alert(pair[0], pair[1]); // 👈 Verifica que los datos están correctos
-      }
+      }*/
 
       try {
         const res = await fetch('http://3.88.175.169:3000/api/videos/upload', {
