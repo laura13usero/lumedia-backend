@@ -1,55 +1,41 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  // Recuperar el token desde localStorage
-  const token = localStorage.getItem('token');
-  if (!token) {
-    alert('Debes iniciar sesión');
-    window.location.href = 'login.html';  // Redirigir si no hay token
-    return;
-  }
-
-  // Cargar categorías
-  const categoriaSelect = document.getElementById('categoria-select');
-  const cats = await fetch('http://3.88.175.169:3000/api/categorias').then(r => r.json());
-  cats.forEach(cat => {
-    const option = document.createElement('option');
-    option.value = cat.id;
-    option.textContent = cat.nombre;
-    categoriaSelect.appendChild(option);
-  });
-
-  // Formulario
+document.addEventListener('DOMContentLoaded', () => {
+  // Asegúrate de que el DOM esté completamente cargado
   const form = document.getElementById('upload-form');
-  const mensaje = document.getElementById('mensaje');
+  const token = localStorage.getItem('token');
+  const mensaje = document.getElementById('mensaje'); // Suponiendo que quieras mostrar mensajes de error aquí
 
   form.addEventListener('submit', async (e) => {
-    e.preventDefault();  // Evita que el formulario se envíe de forma tradicional
-    alert('Formulario enviado');
-    
+    e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
     const formData = new FormData(form);
+
+    alert('Subiendo vídeo...');
 
     try {
       const res = await fetch('http://3.88.175.169:3000/api/videos/upload', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`, // Incluir el token en la cabecera Authorization
+          'Authorization': 'Bearer ' + token
         },
-        body: formData // El contenido del formulario
+        body: formData
       });
 
       if (!res.ok) {
-        // Cuando la respuesta no es ok, es necesario extraer y mostrar el error correctamente
-        const err = await res.json(); // Intentar extraer el objeto JSON de error
-        alert('Error al subir el vídeo: ' + (err.error || err.message || 'Error desconocido'));
-        throw new Error(err.error || err.message || 'Error desconocido');
+        // Si la respuesta no es ok, manejar el error
+        const err = await res.json(); // Obtener el mensaje de error en formato JSON
+        alert('Error al subir el vídeo: ' + (err.error || 'Error desconocido')); // Mostrar el mensaje de error
+        throw new Error(err.error || 'Error desconocido'); // Lanzar el error para ser capturado en el bloque catch
       }
 
       alert('¡Vídeo subido correctamente!');
       form.reset();
-      setTimeout(() => window.location.href = 'perfil.html', 1500); // Redirige después de subir el vídeo
+      setTimeout(() => window.location.href = 'perfil.html', 1500);
+
     } catch (err) {
-      // Captura el error de la solicitud y muestra un mensaje claro
-      alert('Error al subir el vídeo: ' + err.message);
-      mensaje.textContent = `❌ ${err.message}`;
+      // Manejar errores generados tanto por la API como por otros problemas
+      alert('Error al subir el vídeo: ' + err.message); // Mostrar el mensaje de error
+      if (mensaje) {
+        mensaje.textContent = `❌ ${err.message}`; // Mostrar mensaje de error en el DOM
+      }
     }
   });
 });
