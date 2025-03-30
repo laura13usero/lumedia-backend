@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (categoriaSeleccionada === 'ranking') {
       // Si se selecciona 'ranking', obtener los vídeos ordenados por likes
-      fetch('http://3.88.175.169:3000/api/videos/ranking')
+      fetch('http://13.218.77.33:3000/api/videos/ranking')
         .then(r => r.json())
         .then(data => {
           rankingVideos = data;  // Guardamos los vídeos del ranking
