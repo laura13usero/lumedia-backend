@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     } else {
       // Si NO hay sesión, mostrar "Iniciar sesión" y "Registrarse"
+      //        <a href="login.html"><button id="iniciar-sesion" class="ui-btn"><span>Iniciar sesión</span></button></a>
+      //<a href="register.html"><button id="register" class="ui-btn"><span>Registrarse</span></button></a>
       extra = `
         <nav class="nav-user">
-        <a href="login.html"><button id="iniciar-sesion" class="ui-btn"><span>Iniciar sesión</span></button></a>
-        <a href="register.html"><button id="register" class="ui-btn"><span>Registrarse</span></button></a>
           <a href="login.html">Iniciar sesión</a>
           <a href="register.html">Registrarse</a>
         </nav>

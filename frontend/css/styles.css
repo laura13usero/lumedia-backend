@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #ff0101;
+  background: #fff;
   color: #333;
   min-height: 100vh;
   display: flex;
@@ -86,14 +86,17 @@ body.auth-page{
 
 .auth-container button,
 button {
-  padding: 0.75rem;
-  background-color: #6441a5;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
+  background: #0072bc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    border: 2px solid #0072bc;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
 }
 
 .auth-container button:hover,
@@ -121,7 +124,7 @@ button:hover {
 
 /* ==== HEADER ==== */
 header {
-  background: linear-gradient(to right, #2a0845, #6441a5);
+  background: linear-gradient(to right, #2a0845, #070f26);
   color: white;
   padding: 1rem 2rem;
   display: flex;
@@ -143,15 +146,20 @@ header h1 {
 
 .nav-user a,
 .nav-user button {
-  background: white;
-  color: #2a0845;
+  background: #0072bc;
+  color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-weight: bold;
-  border: none;
+  border: 2px solid #0072bc;
   text-decoration: none;
   cursor: pointer;
   transition: background 0.3s;
+}
+
+.nav-user a:hover{
+  background-color: #070f26;
+  border: 2px solid #fff;
 }
 
 .nav-user a:hover,
@@ -236,6 +244,18 @@ header h1 {
   gap: 1rem;
   margin: 2rem 0;
 }
+
+/* ==== SUBIR ==== */
+#upload-form {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-content: flex-start;
+      justify-content: space-between;
+      gap: 2em;
+      margin-top: 2em;
+}
+
 
 /* ==== PERFIL ==== */
 .usuario-info {
@@ -379,9 +399,9 @@ header h1 {
 
 
 .ui-btn {
-  --btn-default-bg: #4b2b8a;
+  --btn-default-bg: #0072bc;
   --btn-padding: 15px 20px;
-  --btn-hover-bg: rgb(51, 51, 51);
+  --btn-hover-bg: #070f26;
   --btn-transition: .3s;
   --btn-letter-spacing: .1rem;
   --btn-animation-duration: 1.2s;
@@ -394,6 +414,25 @@ header h1 {
   --font-weight: 600;
   --font-family: Menlo,Roboto Mono,monospace;
   /* 👆 this field should not be empty */
+}
+
+#logout-btn{
+  background: #0072bc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    border: 2px solid #0072bc;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+}
+
+#logout-btn:hover{
+    background: #070f26;
+    border: 2px solid #fff;
 }
 
 .ui-btn {
