@@ -192,12 +192,17 @@ header h1 {
   }
 }
 
+.my-vids-title{
+  margin-bottom: 1em;
+}
+
 .video-card {
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   transition: transform 0.2s;
+  padding: 15px;
 }
 
 .video-card:hover {
