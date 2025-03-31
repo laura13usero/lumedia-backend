@@ -2,7 +2,11 @@ const db = require('../database/db');
 //const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
+const axios = require('axios'); // Se agrega axios para llamar a Lambda
 const { enviarCorreoConfirmacion } = require('../utils/ses');
+
+// URL de tu API Gateway que invoca la función Lambda
+const LAMBDA_URL = "https://iyy7v7mtza.execute-api.us-east-1.amazonaws.com/prod/enviarCorreo";
 
 exports.register = async (req, res) => {
   const { nombre, email, contraseña } = req.body;
@@ -14,7 +18,7 @@ exports.register = async (req, res) => {
 
   try {
     // Encriptación de la contraseña
-    const hash = contraseña//await bcrypt.hash(contraseña, 10);
+    const hash = contraseña; //await bcrypt.hash(contraseña, 10);
 
     // Generación de token de confirmación
     const token = crypto.randomBytes(20).toString('hex');
@@ -27,6 +31,14 @@ exports.register = async (req, res) => {
 
     // Enviar correo de confirmación
     await enviarCorreoConfirmacion(email, token);
+
+    // 🔹 Llamar a la función Lambda para enviar correo de bienvenida
+    try {
+      await axios.post(LAMBDA_URL, { email, nombre });
+      console.log("Correo de bienvenida enviado con éxito.");
+    } catch (lambdaError) {
+      console.error("Error al enviar correo de bienvenida:", lambdaError.message);
+    }
 
     // Responder con éxito
     res.status(201).json({ mensaje: 'Usuario registrado. Revisa tu correo para confirmar.' });
@@ -87,19 +99,14 @@ exports.login = async (req, res) => {
     }
 
     // Comparar la contraseña proporcionada con la almacenada
-    //const match = await bcrypt.compare(contraseña, user.contraseña);
-
-    /*if (!match) {
-      return res.status(401).json({ error: 'Credenciales inválidas' });
-    }*/
-
     if (contraseña !== user.contraseña) {
       console.log('Las contraseñas no coinciden');
+      return res.status(401).json({ error: 'Credenciales inválidas' });
     }
 
     // Generar un token JWT
     const token = user.id; //jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '2h' });
-    
+
     // Enviar el token de respuesta
     res.json({ token });
   } catch (err) {
@@ -108,4 +115,3 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: 'Error al iniciar sesión' });
   }
 };
-
