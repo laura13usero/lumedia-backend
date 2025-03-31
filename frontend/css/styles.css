@@ -44,6 +44,11 @@ body.auth-page{
   z-index: -1;
   opacity: 0.95;
   pointer-events: none;
+  -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    filter: blur(15px);
 }
 
 .auth-container {
@@ -124,7 +129,7 @@ button:hover {
 
 /* ==== HEADER ==== */
 header {
-  background: linear-gradient(to right, #2a0845, #070f26);
+  background: linear-gradient(to right, #0072bc, #070f26);
   color: white;
   padding: 1rem 2rem;
   display: flex;
@@ -250,7 +255,7 @@ header h1 {
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
-      align-content: flex-start;
+      align-content: center;
       justify-content: space-between;
       gap: 2em;
       margin-top: 2em;
@@ -292,11 +297,11 @@ header h1 {
   --input-focus: #b78dce;
   --font-color: #ffffff;
   --font-color-sub: #000000;
-  --bg-color: #ddddc7;
+  --bg-color: #ffffff;
   --main-color: black;
-  --button-color: #4b2b8a;
+  --button-color: #070f26;
   padding: 20px;
-  background: #7e5dcb;
+  background: #0072bc;
   display: flex;
       margin-top: 15vh;
   flex-direction: column;
@@ -332,7 +337,7 @@ header h1 {
   box-shadow: 4px 4px var(--main-color);
   font-size: 15px;
   font-weight: 600;
-  color: var(--font-color);
+  color: var(--main-color);
   padding: 5px 10px;
   outline: none;
 }
